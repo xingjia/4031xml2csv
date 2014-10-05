@@ -46,23 +46,27 @@ class Handler(ContentHandler,DTDHandler):
 			self.entry = self.tempData.get('pubKey','')+','+self.tempData.get('title','')+','+self.tempData.get('year','')+','
 			if name == 'article':
 				self.inArticle = 0
-				self.entry = self.tempData.get('journal','')+','+self.tempData.get('number','')+','+self.tempData('volumn','')+','+self.tempData('month','')+'\n'
+				self.entry += self.tempData.get('journal','')+','+self.tempData.get('number','')+','+self.tempData('volumn','')+','+self.tempData('month','')+'\n'
 				f = open('article.csv','a')
 				f.write(self.entry.encode('utf-8'))
 			elif name == 'inproceedings':
 				self.inInproceedings = 0
+				self.entry += self.tempData.get('booktitle','')+','+self.tempData.get('editor','')+'\n'
 				f = open('inproceedings.csv','a')
 				f.write(self.entry.encode('utf-8'))
 			elif name == 'proceedings':
 				self.inProceedings = 0
+				self.entry += self.tempData.get('booktitle','')+','+self.tempData.get('editor','')+'\n'
 				f = open('proceedings.csv','a')
 				f.write(self.entry.encode('utf-8'))
 			elif name == 'book':
 				self.inBook = 0
+				self.entry += self.tempData.get('isbn','')+','+self.tempData.get('publisher','')+'\n'
 				f = open('book.csv','a')
 				f.write(self.entry.encode('utf-8'))
 			elif name == 'incollection':
 				self.inIncollection = 0
+				self.entry += self.tempData.get('isbn','')+','+self.tempData.get('booktitle','')+','+self.tempData.get('publisher','')+'\n'
 				f = open('incollection.csv','a')
 				f.write(self.entry.encode('utf-8'))
 			# elif name == 'phdthesis':self.inPhdthesis = 0
@@ -74,7 +78,6 @@ class Handler(ContentHandler,DTDHandler):
 				f = open('www.csv','a')
 				f.write(self.entry.encode('utf-8'))
 
-			self.entry = ''
 			self.tempData = {}
 
 
