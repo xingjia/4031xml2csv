@@ -46,6 +46,7 @@ class Handler(ContentHandler,DTDHandler):
 			self.entry = self.tempData.get('pubKey','')+','+self.tempData.get('title','')+','+self.tempData.get('year','')+','
 			if name == 'article':
 				self.inArticle = 0
+				self.entry = self.tempData.get('journal','')+','+self.tempData.get('number','')+','+self.tempData('volumn','')+','+self.tempData('month','')+'\n'
 				f = open('article.csv','a')
 				f.write(self.entry.encode('utf-8'))
 			elif name == 'inproceedings':
