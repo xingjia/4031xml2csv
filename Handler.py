@@ -63,10 +63,9 @@ class Handler(ContentHandler,DTDHandler):
 		self.currentNode = ''
 		if name in self.publication:
 			self.entry =  str(self.tempData.get('pubId',''))+','+self.tempData.get('pubKey','')+','+self.tempData.get('title','')+','+self.tempData.get('year','')+','+self.tempData.get('name','')+'\n'
-			self.publicationFile.write(self.entry.encode('utf-8')
-
+			self.publicationFile.write(self.entry.encode('utf-8'))
 			if name == 'article':
-				self.entry = str(self.tempData.get('pubId',''))+','+self.tempData.get('journal','')+','+self.tempData.get('number','')+','+self.tempData.get('volumn','')+','+self.tempData('month','')+'\n'
+				self.entry = str(self.tempData.get('pubId',''))+','+self.tempData.get('journal','')+','+self.tempData.get('number','')+','+self.tempData.get('volumn','')+','+self.tempData.get('month','')+'\n'
 				self.articleFile.write(self.entry.encode('utf-8'))
 			elif name == 'inproceedings':
 				self.entry = str(self.tempData.get('pubId',''))+','+self.tempData.get('booktitle','')+','+self.tempData.get('editor','')+'\n'
